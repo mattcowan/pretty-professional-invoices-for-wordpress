@@ -2,6 +2,8 @@
 
 A self-contained WordPress plugin for managing invoices, clients, projects, and time tracking. Zero external dependencies required.
 
+I built this for myself several years ago to manage my business, now working on turning it into a plugin I can share.
+
 ## Features
 
 - **Custom Post Types**
@@ -196,5 +198,4 @@ See LICENSE file for details
 ## Credits
 
 **Author:** Matthew Cowan
-**Plugin URI:** https://prettyprofessionalinvoices.com
 **Author URI:** https://mnc4.com
