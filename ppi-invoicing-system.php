@@ -91,6 +91,17 @@ class PPI_Invoicing_System {
 				PPI_INVOICING_VERSION
 			);
 
+			// Single invoice page scripts
+			if ( is_singular( 'ppi_invoice' ) ) {
+				wp_enqueue_script(
+					'ppi-invoice-single',
+					PPI_INVOICING_PLUGIN_URL . 'assets/js/invoice-single.js',
+					array(),
+					PPI_INVOICING_VERSION,
+					true
+				);
+			}
+
 			// Archive page scripts
 			if ( is_post_type_archive( 'ppi_invoice' ) && is_user_logged_in() ) {
 				wp_enqueue_script(

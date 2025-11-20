@@ -148,6 +148,7 @@ $all_clients = get_posts(array(
 						<?php _e( 'Amount', 'ppi-invoicing' ); ?>
 						<span class="sort-indicator" aria-hidden="true"></span>
 					</th>
+					<th scope="col" class="text-center no-print"><?php _e( 'Actions', 'ppi-invoicing' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -336,6 +337,29 @@ foreach ($posts_data as $post_data) : ?>
 			}
 
 			?></td>
+		<td class="text-center no-print">
+			<div class="invoice-action-buttons">
+				<a href="<?php echo esc_url( $post_data['permalink'] ); ?>"
+				   class="action-btn action-btn-view"
+				   title="<?php esc_attr_e( 'View Invoice', 'ppi-invoicing' ); ?>"
+				   aria-label="<?php echo esc_attr( sprintf( __( 'View invoice %s', 'ppi-invoicing' ), $post_data['post_name'] ) ); ?>">
+					<span aria-hidden="true">&#128065;</span>
+				</a>
+				<a href="<?php echo esc_url( add_query_arg( 'print', '1', $post_data['permalink'] ) ); ?>"
+				   class="action-btn action-btn-print"
+				   title="<?php esc_attr_e( 'Print Invoice', 'ppi-invoicing' ); ?>"
+				   aria-label="<?php echo esc_attr( sprintf( __( 'Print invoice %s', 'ppi-invoicing' ), $post_data['post_name'] ) ); ?>">
+					<span aria-hidden="true">&#128424;</span>
+				</a>
+				<a href="<?php echo esc_url( $post_data['permalink'] ); ?>"
+				   target="_blank"
+				   class="action-btn action-btn-download"
+				   title="<?php esc_attr_e( 'Download PDF', 'ppi-invoicing' ); ?>"
+				   aria-label="<?php echo esc_attr( sprintf( __( 'Download PDF of invoice %s', 'ppi-invoicing' ), $post_data['post_name'] ) ); ?>">
+					<span aria-hidden="true">&#128190;</span>
+				</a>
+			</div>
+		</td>
 	</tr>
 <?php endforeach; ?>
 			</tbody>
@@ -350,6 +374,7 @@ foreach ($posts_data as $post_data) : ?>
 							<td></td>
 							<th scope="row"><?php echo esc_html( $status_config['label'] ); ?></th>
 							<td class="text-right font-monospace"><?php echo esc_html( number_format( $status_totals[ $status_config['value'] ], 2 ) ); ?></td>
+							<td class="no-print"></td>
 						</tr>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -358,12 +383,14 @@ foreach ($posts_data as $post_data) : ?>
 					<td></td>
 					<th scope="row"><?php _e( 'Total (Counted Statuses)', 'ppi-invoicing' ); ?></th>
 					<td class="text-right font-monospace"><?php echo esc_html( number_format($grand_total,2) ); ?></td>
+					<td class="no-print"></td>
 				</tr>
 				<tr class="">
 					<td class="text-center"><i class="ppi-pig" aria-hidden="true"></i><span class="screen-reader-text"><?php _e( 'Everything', 'ppi-invoicing' ); ?></span></td>
 					<td></td>
 					<th scope="row"><?php _e( 'Everything', 'ppi-invoicing' ); ?></th>
 					<td class="text-right font-monospace"><?php echo esc_html( number_format($everything_total,2) ); ?></td>
+					<td class="no-print"></td>
 				</tr>
 			</tfoot>
 		</table>

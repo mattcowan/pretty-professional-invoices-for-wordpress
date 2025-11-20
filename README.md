@@ -38,10 +38,13 @@ I built this for myself several years ago to manage my business, now working on 
   - Client breakdown with percentages
   - Revenue tracking
   - Export to CSV and Excel (filtered invoices)
+  - Quick action buttons (view, print, download PDF) for each invoice
 
 - **Professional Templates**
   - Clean invoice layout
   - PDF-ready print styles
+  - Print and download buttons on single invoices
+  - Auto-print functionality from archive links
   - Responsive design
 
 ## Installation
@@ -88,6 +91,15 @@ On the archive page (Invoicing), logged-in users can:
 - Click "Save Status Changes" to bulk update
 - View real-time totals and client breakdowns
 - Sort by status, date, client, or amount
+
+### Quick Actions from Archive Page
+
+Each invoice row in the archive table includes action buttons:
+- **View** (👁️) - Opens the full invoice page
+- **Print** (🖨️) - Opens invoice and automatically triggers print dialog
+- **Download PDF** (💾) - Opens invoice in new tab for saving as PDF
+
+These buttons are hidden when printing the archive page.
 
 ### Filtering and Exporting Invoices
 
@@ -178,7 +190,8 @@ ppi-invoicing-system/
 │   │   └── invoice-styles.css
 │   ├── js/
 │   │   ├── invoice-admin.js
-│   │   └── invoice-archive.js
+│   │   ├── invoice-archive.js
+│   │   └── invoice-single.js
 │   └── img/
 ├── includes/
 │   ├── ajax-handlers.php
@@ -204,6 +217,13 @@ ppi-invoicing-system/
 - PHP 7.4 or higher
 
 ## Changelog
+
+### 1.2.0
+- Added print and download PDF buttons to single invoice pages
+- Added quick action buttons (view, print, download) to archive table
+- Auto-print functionality when accessing invoices via print links
+- Action buttons hidden during print for clean output
+- Enhanced user experience with icon-based controls
 
 ### 1.1.0
 - Added CSV and Excel export functionality for filtered invoices

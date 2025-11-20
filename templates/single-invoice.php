@@ -55,6 +55,15 @@ $phone_link = preg_replace('/[^0-9]/', '', $phone); // Strip formatting for tel:
 <div class="invoice-body">
 
 	<h1 class="invoice-number">Invoice N<span class="fancy-o">o</span><span class="fancy-period">.</span> <?php echo esc_html( ppi_get_field('invoice_number') ); ?></h1>
+
+	<div class="invoice-actions no-print">
+		<button onclick="window.print()" class="btn btn-primary" aria-label="<?php esc_attr_e( 'Print Invoice', 'ppi-invoicing' ); ?>">
+			<?php _e( 'Print', 'ppi-invoicing' ); ?>
+		</button>
+		<button onclick="downloadPDF()" class="btn btn-secondary" aria-label="<?php esc_attr_e( 'Download PDF', 'ppi-invoicing' ); ?>">
+			<?php _e( 'Download PDF', 'ppi-invoicing' ); ?>
+		</button>
+	</div>
 	<div class="invoice-info row">
 		<div class="col-4">
 			<div class="invoice-lines">
