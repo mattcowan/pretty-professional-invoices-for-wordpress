@@ -96,9 +96,28 @@ $all_clients = get_posts(array(
 				<div class="filter-group filter-actions">
 					<button id="clear-filters" class="btn btn-secondary btn-sm"><?php _e( 'Clear Filters', 'ppi-invoicing' ); ?></button>
 				</div>
+
+				<?php if (is_user_logged_in()) : ?>
+				<div class="filter-group filter-actions">
+					<div class="export-dropdown" style="position: relative; display: inline-block;">
+						<button id="export-dropdown-toggle" class="btn btn-success btn-sm" aria-haspopup="true" aria-expanded="false">
+							<?php _e( 'Export', 'ppi-invoicing' ); ?> <span class="caret">&#9662;</span>
+						</button>
+						<div id="export-dropdown-menu" class="export-menu" style="display: none; position: absolute; background: white; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; min-width: 160px; margin-top: 2px;">
+							<a href="#" class="export-option" data-format="csv" style="display: block; padding: 8px 12px; text-decoration: none; color: #333; border-bottom: 1px solid #eee;">
+								<?php _e( 'Export as CSV', 'ppi-invoicing' ); ?>
+							</a>
+							<a href="#" class="export-option" data-format="xlsx" style="display: block; padding: 8px 12px; text-decoration: none; color: #333;">
+								<?php _e( 'Export as Excel', 'ppi-invoicing' ); ?>
+							</a>
+						</div>
+					</div>
+				</div>
+				<?php endif; ?>
 			</div>
 			<div class="filter-summary mt-2">
 				<span id="visible-count" class="font-weight-bold"></span>
+				<span id="export-status" class="ml-2" style="color: #666;"></span>
 			</div>
 		</div>
 

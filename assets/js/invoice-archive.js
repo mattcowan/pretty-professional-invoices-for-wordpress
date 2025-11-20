@@ -560,4 +560,111 @@ jQuery(document).ready(function($) {
 
 	// Initialize filter display
 	applyFilters();
+
+	// ========== EXPORT FUNCTIONALITY ==========
+
+	// Toggle export dropdown
+	$('#export-dropdown-toggle').on('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var $menu = $('#export-dropdown-menu');
+		var isExpanded = $(this).attr('aria-expanded') === 'true';
+
+		if (isExpanded) {
+			$menu.hide();
+			$(this).attr('aria-expanded', 'false');
+		} else {
+			$menu.show();
+			$(this).attr('aria-expanded', 'true');
+		}
+	});
+
+	// Close dropdown when clicking outside
+	$(document).on('click', function(e) {
+		if (!$(e.target).closest('.export-dropdown').length) {
+			$('#export-dropdown-menu').hide();
+			$('#export-dropdown-toggle').attr('aria-expanded', 'false');
+		}
+	});
+
+	// Hover effect for export menu items
+	$('.export-option').on('mouseenter', function() {
+		$(this).css('background-color', '#f5f5f5');
+	}).on('mouseleave', function() {
+		$(this).css('background-color', 'white');
+	});
+
+	// Handle export click
+	$('.export-option').on('click', function(e) {
+		e.preventDefault();
+		var format = $(this).data('format');
+
+		// Close dropdown
+		$('#export-dropdown-menu').hide();
+		$('#export-dropdown-toggle').attr('aria-expanded', 'false');
+
+		// Get visible invoice IDs
+		var invoiceIds = [];
+		$('#invoice-table tbody tr:visible').each(function() {
+			var postId = $(this).data('post-id');
+			if (postId) {
+				invoiceIds.push(postId);
+			}
+		});
+
+		if (invoiceIds.length === 0) {
+			$('#export-status').text('No invoices to export');
+			setTimeout(function() {
+				$('#export-status').text('');
+			}, 3000);
+			return;
+		}
+
+		// Show loading message
+		$('#export-status').text('Preparing export...');
+		$('#export-dropdown-toggle').prop('disabled', true);
+
+		// Create a form and submit it to trigger download
+		var form = $('<form>', {
+			method: 'POST',
+			action: ppiInvoicing.ajaxUrl
+		});
+
+		form.append($('<input>', {
+			type: 'hidden',
+			name: 'action',
+			value: 'export_invoices'
+		}));
+
+		form.append($('<input>', {
+			type: 'hidden',
+			name: 'format',
+			value: format
+		}));
+
+		form.append($('<input>', {
+			type: 'hidden',
+			name: 'invoice_ids',
+			value: JSON.stringify(invoiceIds)
+		}));
+
+		form.append($('<input>', {
+			type: 'hidden',
+			name: 'nonce',
+			value: ppiInvoicing.nonce
+		}));
+
+		// Append to body, submit, and remove
+		form.appendTo('body').submit().remove();
+
+		// Clear status after a delay
+		setTimeout(function() {
+			$('#export-status').text(invoiceIds.length + ' invoice' + (invoiceIds.length !== 1 ? 's' : '') + ' exported as ' + format.toUpperCase());
+			$('#export-dropdown-toggle').prop('disabled', false);
+
+			setTimeout(function() {
+				$('#export-status').text('');
+			}, 3000);
+		}, 1000);
+	});
 });

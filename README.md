@@ -33,9 +33,11 @@ I built this for myself several years ago to manage my business, now working on 
 
 - **Archive Features**
   - Sortable invoice table
+  - Advanced filtering (client, status, date range, amount, search)
   - Status breakdown analytics
   - Client breakdown with percentages
   - Revenue tracking
+  - Export to CSV and Excel (filtered invoices)
 
 - **Professional Templates**
   - Clean invoice layout
@@ -86,6 +88,31 @@ On the archive page (Invoicing), logged-in users can:
 - Click "Save Status Changes" to bulk update
 - View real-time totals and client breakdowns
 - Sort by status, date, client, or amount
+
+### Filtering and Exporting Invoices
+
+The archive page provides powerful filtering and export capabilities:
+
+**Filtering Options:**
+- Filter by client
+- Filter by status (multi-select checkboxes)
+- Date range (from/to)
+- Amount range (min/max)
+- Search by invoice number
+
+**Export Features:**
+- Export visible invoices to CSV or Excel format
+- Exports respect all active filters
+- Files include: Invoice Number, Date, Client, Status, Period of Work, Payment Due, Amount
+- Automatic filename generation: `invoices-YYYY-MM-DD.csv` or `.xls`
+- Includes summary row with total amount
+- CSV format uses UTF-8 with BOM for Excel compatibility
+
+To export:
+1. Apply any filters you want (optional)
+2. Click the "Export" button in the filter bar
+3. Choose "Export as CSV" or "Export as Excel"
+4. File downloads automatically
 
 ## Customization
 
@@ -178,12 +205,18 @@ ppi-invoicing-system/
 
 ## Changelog
 
+### 1.1.0
+- Added CSV and Excel export functionality for filtered invoices
+- Export button in archive page filter bar
+- Exports include all invoice details and summary totals
+- UTF-8 BOM support for Excel compatibility
+
 ### 1.0.0
 - Initial release as "Pretty Professional Invoices"
 - Self-contained plugin with native meta boxes
 - Full invoice, client, and project management
 - Customizable status workflows
-- Archive page with analytics
+- Archive page with analytics and filtering
 - Zero external dependencies
 
 ## Support
