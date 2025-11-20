@@ -1,0 +1,208 @@
+/**
+ * Admin Styles
+ * Pretty Professional Invoices
+ */
+
+/* Meta Box Styling */
+.ppi-invoice-type-selector {
+	margin-bottom: 20px;
+	padding: 15px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.ppi-invoice-type-selector h4 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.ppi-invoice-type-selector label {
+	display: block;
+	margin-bottom: 8px;
+	padding: 8px;
+	background: white;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.ppi-invoice-type-selector input[type="radio"] {
+	margin-right: 8px;
+}
+
+.ppi-invoice-type-selector label:hover {
+	background: #f0f0f0;
+}
+
+.ppi-invoice-data-container {
+	margin-top: 20px;
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+/* Project Rows */
+.ppi-project-row {
+	margin-bottom: 30px;
+	padding: 20px;
+	background: #f9f9f9;
+	border: 2px solid #ddd;
+	border-radius: 6px;
+}
+
+.ppi-project-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+}
+
+.ppi-project-header h5 {
+	margin: 0;
+	color: #333;
+}
+
+/* Time Entries */
+.ppi-time-entries {
+	margin-top: 20px;
+	padding: 15px;
+	background: white;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.ppi-time-entries h6 {
+	margin-top: 0;
+	margin-bottom: 15px;
+	color: #555;
+}
+
+.ppi-time-entry-row {
+	margin-bottom: 10px;
+	padding: 10px;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+
+.ppi-time-entry-row input[type="text"],
+.ppi-time-entry-row input[type="number"],
+.ppi-time-entry-row textarea {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.ppi-time-entry-row textarea {
+	min-height: 60px;
+}
+
+/* Itemized Rows */
+.ppi-itemized-row {
+	margin-bottom: 10px;
+	padding: 10px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+
+.ppi-itemized-row input[type="text"],
+.ppi-itemized-row input[type="number"],
+.ppi-itemized-row textarea {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+/* Buttons */
+.ppi-add-project,
+.ppi-add-time-entry,
+.ppi-add-itemized {
+	margin-top: 10px;
+	background: #0073aa;
+	border-color: #0073aa;
+	color: white;
+}
+
+.ppi-add-project:hover,
+.ppi-add-time-entry:hover,
+.ppi-add-itemized:hover {
+	background: #005a87;
+	border-color: #005a87;
+	color: white;
+}
+
+.ppi-remove-project,
+.ppi-remove-time-entry,
+.ppi-remove-itemized {
+	background: #dc3545;
+	border-color: #dc3545;
+	color: white;
+}
+
+.ppi-remove-project:hover,
+.ppi-remove-time-entry:hover,
+.ppi-remove-itemized:hover {
+	background: #c82333;
+	border-color: #c82333;
+	color: white;
+}
+
+/* Datepicker */
+.ppi-datepicker {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23666" d="M5 6h2v2H5V6zm3 0h2v2H8V6zm3 0h2v2h-2V6zm-6 3h2v2H5V9zm3 0h2v2H8V9zm3 0h2v2h-2V9zm-6 3h2v2H5v-2zm3 0h2v2H8v-2zm3 0h2v2h-2v-2zM4 2h1v2H4V2zm7 0h1v2h-1V2z"/><path fill="%23666" d="M2 14V4h12v10H2zm1-9v8h10V5H3z"/></svg>');
+	background-repeat: no-repeat;
+	background-position: calc(100% - 8px) center;
+	background-size: 16px;
+	padding-right: 30px;
+}
+
+/* Form Tables in Meta Boxes */
+.ppi-project-row .form-table th,
+.ppi-time-entry-row .form-table th {
+	width: 180px;
+	padding: 8px 10px;
+}
+
+.ppi-project-row .form-table td,
+.ppi-time-entry-row .form-table td {
+	padding: 8px 10px;
+}
+
+/* Sortable */
+.ppi-projects-list .ppi-project-row,
+.ppi-time-entries-list .ppi-time-entry-row,
+.ppi-itemized-list .ppi-itemized-row {
+	cursor: move;
+}
+
+.ui-sortable-helper {
+	opacity: 0.8;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ui-sortable-placeholder {
+	background: #e3e3e3;
+	border: 2px dashed #999;
+	visibility: visible !important;
+	margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+	.ppi-project-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.ppi-project-header h5 {
+		margin-bottom: 10px;
+	}
+
+	.ppi-time-entry-row table,
+	.ppi-itemized-row table {
+		font-size: 12px;
+	}
+}
